@@ -8,7 +8,9 @@
 
 class XiechengPipeline(object):
     def process_item(self, item, spider):
-        with open("cityName.txt", "a")as fp:
-            fp.write(item['cityName']+'\n')
+        with open("city.txt", "a")as fp:
+            fp.write(item['cityName']+item['cityID'] + '\n')
+        with open("view.txt", "a")as fp:
+            fp.write(item['viewNum']+'\n')
             fp.close()
         return item

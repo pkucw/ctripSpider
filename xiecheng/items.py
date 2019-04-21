@@ -13,64 +13,70 @@ class XiechengItem(scrapy.Item):
     # define the fields for your item here like:
 
     # 城市表
-    # 城市ID
-    # cityID = scrapy.Field()
-    # 城市名称
+    # 城市IDok
+    cityID = scrapy.Field()
+    # 城市名称ok
     cityName = scrapy.Field()
-    # 景点个数
-    # viewNum = scrapy.Field()
+    # 景点个数ok
+    viewNum = scrapy.Field()
+    # 城市网址（解析用 不输出）
+    cityUrl = scrapy.Field()
 
     # 景点表
+    # 景点链接（解析用 不输出）
+    viewUrl = scrapy.Field()
     # 景点ID
-    # viewID = scrapy.Field()
+    viewID = scrapy.Field()
     # 景点名称
-    # viewName = scrapy.Field()
+    viewName = scrapy.Field()
     # 景点评分
-    # viewScore = scrapy.Field()
-    # # 景点排名
+    viewScore = scrapy.Field()
+    # # 景点排名????只有前100名
     # viewTop = scrapy.Field()
     # 景点评论条数
-    # commentNum = scrapy.Field()
+    commentNum = scrapy.Field()
     # 想去人数
-    # peopleNum = scrapy.Field()
+    peoplewantNum = scrapy.Field()
     # 去过人数
-    # peopledNum = scrapy.Field()
+    peoplegoneNum = scrapy.Field()
     # 景点地址
-    # viewArea = scrapy.Field()
-    # 等级？？？？
-    # 电话？？？？
+    viewArea = scrapy.Field()
+    # 等级
+    viewGrade = scrapy.Field()
+    # 电话
+    viewPhone = scrapy.Field()
     # 开放时间
-    # openTime = scrapy.Field()
+    openTime = scrapy.Field()
     # 景点简介
-    # viewIntro = scrapy.Field()
+    viewIntro = scrapy.Field()
     # 交通
-    # viewTrans = scrapy.Field()
-    # 景色得分
-    # scoreScenery = scrapy.Field()
-    # 趣味得分
-    # scoreInterest = scrapy.Field()
-    # 性价比得分
-    # scoreWorth = scrapy.Field()
+    viewTrans = scrapy.Field()
+    # 景色总得分
+    scoreScenery = scrapy.Field()
+    # 趣味总得分
+    scoreInterest = scrapy.Field()
+    # 性价比总得分
+    scoreWorth = scrapy.Field()
     # 评论条数（情侣出游）
-    # CommentNum1 = scrapy.Field()
+    CommentNum1 = scrapy.Field()
     # 评论条数（家庭亲子）
-    # CommentNum2 = scrapy.Field()
+    CommentNum2 = scrapy.Field()
     # 评论条数（朋友出游）
-    # CommentNum3 = scrapy.Field()
+    CommentNum3 = scrapy.Field()
     # 评论条数（商务旅行）
-    # CommentNum4 = scrapy.Field()
+    CommentNum4 = scrapy.Field()
     # 评论条数（单独旅行）
-    # CommentNum5 = scrapy.Field()
+    CommentNum5 = scrapy.Field()
     # 评论条数（很好）
-    # CommentNumPerfect = scrapy.Field()
+    CommentNumPerfect = scrapy.Field()
     # 评论条数（好）
-    # CommentNumGood = scrapy.Field()
+    CommentNumGood = scrapy.Field()
     # 评论条数（一般）
-    # CommentNumJs = scrapy.Field()
+    CommentNumJs = scrapy.Field()
     # 评论条数（差）
-    # CommentNumBad = scrapy.Field()
+    CommentNumBad = scrapy.Field()
     # 评论条数（很差）
-    # CommentNumVeryBad = scrapy.Field()
+    CommentNumVeryBad = scrapy.Field()
 
     # 景点评论表
     # 评论ID
