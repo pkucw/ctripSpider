@@ -56,7 +56,6 @@ class ViewSpider(scrapy.Spider):
             item['nextpage'] = next_page
             yield item
             yield scrapy.Request(next_page, callback=self.getcityInfo)
-
         yield item
 
     # 三级页面解析景点具体数据及总体评论数据
