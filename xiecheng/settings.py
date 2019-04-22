@@ -14,7 +14,7 @@ BOT_NAME = 'xiecheng'
 SPIDER_MODULES = ['xiecheng.spiders']
 NEWSPIDER_MODULE = 'xiecheng.spiders'
 
-ITEM_PIPELINES={'xiecheng.pipelines.XiechengPipeline':300}
+ITEM_PIPELINES = {'xiecheng.pipelines.XiechengPipeline': 300}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'xiecheng (+http://www.yourdomain.com)'

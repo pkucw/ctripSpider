@@ -13,11 +13,11 @@ class XiechengItem(scrapy.Item):
     # define the fields for your item here like:
 
     # 城市表
-    # 城市IDok
+    # 城市ID ok
     cityID = scrapy.Field()
-    # 城市名称ok
+    # 城市名称 ok
     cityName = scrapy.Field()
-    # 景点个数ok
+    # 景点个数 ok
     viewNum = scrapy.Field()
     # 城市网址（解析用 不输出）
     cityUrl = scrapy.Field()
@@ -25,27 +25,29 @@ class XiechengItem(scrapy.Item):
     # 景点表
     # 景点链接（解析用 不输出）
     viewUrl = scrapy.Field()
-    # 景点ID
+    # 下一页链接（解析用 不输出）
+    nextpage = scrapy.Field()
+    # 景点ID ok
     viewID = scrapy.Field()
-    # 景点名称
+    # 景点名称 ok
     viewName = scrapy.Field()
-    # 景点评分
+    # 景点评分 ok
     viewScore = scrapy.Field()
     # # 景点排名????只有前100名
     # viewTop = scrapy.Field()
-    # 景点评论条数
+    # 景点评论条数 ok
     commentNum = scrapy.Field()
-    # 想去人数
+    # 想去人数 ok
     peoplewantNum = scrapy.Field()
-    # 去过人数
+    # 去过人数 ok
     peoplegoneNum = scrapy.Field()
-    # 景点地址
+    # 景点地址 ok
     viewArea = scrapy.Field()
-    # 等级
+    # 等级 ok
     viewGrade = scrapy.Field()
-    # 电话
+    # 电话 ok
     viewPhone = scrapy.Field()
-    # 开放时间
+    # 开放时间ok
     openTime = scrapy.Field()
     # 景点简介
     viewIntro = scrapy.Field()
