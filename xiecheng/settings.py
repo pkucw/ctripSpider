@@ -19,7 +19,7 @@ ITEM_PIPELINES = {'xiecheng.pipelines.XiechengPipeline': 300}
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'xiecheng (+http://www.yourdomain.com)'
 
-# Obey robots.txt rules
+# 不遵循机器人协议
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)

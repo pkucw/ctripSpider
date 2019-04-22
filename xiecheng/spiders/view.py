@@ -25,9 +25,11 @@ class ViewSpider(scrapy.Spider):
             item['cityName'] = each_cityNames.xpath('./text()').extract()[0]
             item['cityUrl'] = ','.join(each_cityNames.xpath('@href').extract()).replace("place", "sight")  # '.'join()将数组转换成字符串,.replace()用来替换字符串
             # 每个城市的链接
+            print('ok')
             cityurl = self.baseurl+item['cityUrl']
             yield item
             yield scrapy.Request(cityurl, callback=self.getcityInfo)
+
 
     # 二级页面解析景点数目以及返回后续页面所需链接
 
@@ -44,7 +46,6 @@ class ViewSpider(scrapy.Spider):
             item['viewUrl'] = ','.join(each_views.xpath('./@href').extract())
             # 每个景点的链接
             viewurl = self.baseurl + item['viewUrl']
-            yield item
             yield scrapy.Request(viewurl, callback=self.getviewInfo)
 
         # 连续获取下一页的链接
@@ -54,7 +55,6 @@ class ViewSpider(scrapy.Spider):
             next_page = self.baseurl+next_page
             item = XiechengItem()
             item['nextpage'] = next_page
-            yield item
             yield scrapy.Request(next_page, callback=self.getcityInfo)
         yield item
 
@@ -98,7 +98,7 @@ class ViewSpider(scrapy.Spider):
             item['CommentNumBad'] = each_commentsAllInfos.xpath('./div[2]/ul/li[5]/a/span/text()').re('\d+')[0]
             item['CommentNumVeryBad'] = each_commentsAllInfos.xpath(
                 './div[2]/ul/li[5]/a/span/text()').re('\d+')[0]
-        #景点简介及交通
+        # 景点简介及交通
         item['viewIntro'] = response.xpath('/html/body/div[3]/div/div[1]/div[5]/div[2]/div[1]/div/text()').extract()[
             0].strip()
 
