@@ -21,8 +21,6 @@ class ViewSpider(scrapy.Spider):
         cityNames = response.xpath('//div[@id="journals-panel-items"]/dl[2]/dd[@class="panel-con"]/ul/li/a')
         for each_cityNames in cityNames:
             item = XiechengItem()
-            item['cityID'] = ','.join(each_cityNames.xpath('@href').re('\d+'))  # re.sub用来提取字符串中的数字部分
-            item['cityName'] = each_cityNames.xpath('./text()').extract()[0]
             item['cityUrl'] = ','.join(each_cityNames.xpath('@href').extract()).replace("place", "sight")  # '.'join()将数组转换成字符串,.replace()用来替换字符串
             # 每个城市的链接
             print('ok')
@@ -34,13 +32,19 @@ class ViewSpider(scrapy.Spider):
     # 二级页面解析景点数目以及返回后续页面所需链接
 
     def getcityInfo(self, response):
-
+        item = XiechengItem()
+        cityinfo = response.xpath('/html/body/div[2]/div[2]/div[1]/div[1]/h1/a')
+        # 在每个城市景点的第一页获取城市名称、城市ID
+        for each_cityinfo in cityinfo:
+            item['cityID'] = ','.join(each_cityinfo.xpath('@href').re('\d+')) # re.sub用来提取字符串中的数字部分
+            item['cityName'] = each_cityinfo.xpath('@title').extract()[0]
         # 在每个城市景点的第一页获取城市中的景点个数
         viewNums = response.xpath('//div[@class="ttd_pager cf"]/p')
         views = response.xpath('/html/body/div[4]/div/div[2]/div/div[3]/div/div[2]/dl/dt/a')
-        item = XiechengItem()
         item['viewNum'] = viewNums.xpath('./text()').re('\d+')[2]
+        yield item
 
+        # 从这里开始注释
         # 获取当前页的每个景点链接
         for each_views in views:
             item['viewUrl'] = ','.join(each_views.xpath('./@href').extract())
@@ -51,7 +55,6 @@ class ViewSpider(scrapy.Spider):
         # 连续获取下一页的链接
         next_page = response.xpath('//a[@class="nextpage"]/@href').extract_first()  # 获取下一页链接
         if next_page is not None:
-            #next_page = response.urljoin(response.url, next_page)  # urljoin将下一页的url变为绝对路径
             next_page = self.baseurl+next_page
             item = XiechengItem()
             item['nextpage'] = next_page
